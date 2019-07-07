@@ -82,20 +82,20 @@ train_X = train_X.reshape((train_X.shape[0], sequencelength*input_features[0]))
 test_X = test_X.reshape((test_X.shape[0], sequencelength*input_features[0]))
 
 # design model ############################################################
-#svr_rbf = SVR(kernel='rbf', C=60, gamma=0.1, epsilon=0.1)
+svr_rbf = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=0.1)
 #svr_lin = SVR(kernel='linear', C=100, gamma='auto')
 #svr_poly = SVR(kernel='poly', C=100, gamma='auto', degree=3, epsilon=.005,
 #               coef0=1)
 #
-#model=svr_lin
-#model.fit(train_X, train_y)
+model=svr_rbf
+model.fit(train_X, train_y)
 
 #grid search
-parameters = {'kernel': ['rbf'], 'C':[1.5, 10],'gamma': [1e-7, 1e-4],'epsilon':[0.1,0.2,0.5,0.3]}
-svr = SVR()
-clf = skl.model_selection.GridSearchCV(svr, parameters)
-clf.fit(train_X,train_y)
-clf.best_params_
+#parameters = {'kernel': ['rbf'], 'C':[0.5,1,1.5,3,5,8,10,15,20,30,40,50,60,100],'gamma': [1e-7, 1e-4,1e-2,1e-1,1],'epsilon':[0.1,0.2,0.5,0.3]}
+#svr = SVR()
+#clf = skl.model_selection.GridSearchCV(svr, parameters)
+#clf.fit(train_X,train_y)
+#clf.best_params_
 
 
 #noepochs=150
